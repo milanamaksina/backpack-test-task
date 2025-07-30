@@ -1,0 +1,40 @@
+@use "@/styles/colors";
+
+.tabs {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 59px;
+        border: 1px solid colors.$color-inventory-filter-border;
+        font-family: "Commuters Sans", sans-serif;
+        font-size: 24px;
+    }
+}
+
+.close-btn {
+    background-color: colors.$color-background;
+    color: colors.$color-text-active;
+    padding: 16px;
+}
+
+.backpack-tab {
+    background-color: colors.$color-background;
+    color: colors.$color-text-active;
+    width: 100%;
+}
+
+.nexus-tab {
+    color: colors.$color-inventory-btn-text;
+    background-color: colors.$color-inventory-filter-background;
+    width: 100%;
+}
+
+.close-icon {
+    height: 28px;
+    width: 28px;
+}
