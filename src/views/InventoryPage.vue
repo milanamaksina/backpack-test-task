@@ -1,5 +1,5 @@
 <template>
-  <div class="inventory-page">
+  <div class="inventory-container">
     <InventoryTabs />
     <div class="inventory-wrapper">
       <InventoryFilter
