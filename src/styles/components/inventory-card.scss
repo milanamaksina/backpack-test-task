@@ -9,6 +9,16 @@
     align-items: center;
     overflow: hidden;
     font-family: "Apercu Pro", sans-serif;
+    opacity: 0;
+    transform: scale(0.95);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    &.card-visible {
+        opacity: 1;
+        transform: scale(1);
+    }
 
     .image-wrapper {
         position: relative;
@@ -33,5 +43,61 @@
         &.weapon {
             background: radial-gradient(59.14% 59.14% at 50% 50%, #7f59ce 0%, rgba(127, 89, 206, 0) 100%), #1a1a1a;
         }
+    }
+
+    .cooldown-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+    }
+
+    .cooldown-text {
+        color: colors.$color-text-active;
+        font-weight: 900;
+        font-size: 20px;
+    }
+
+    .cooldown-icon {
+        height: 27px;
+        width: 28px;
+    }
+
+    .charges-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: colors.$color-text-active;
+        font-size: 15px;
+        padding: 2px 4px;
+        user-select: none;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .charges-label::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 36px solid colors.$color-inventory-filter-border;
+        border-right: 63px solid transparent;
+        z-index: -1;
+    }
+
+    .count-label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 4px;
+        color: colors.$color-text-active;
+        font-size: 17px;
+        user-select: none;
+        pointer-events: none;
     }
 }
