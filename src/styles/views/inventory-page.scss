@@ -1,0 +1,17 @@
+@use "@/styles/colors";
+
+.inventory-page {
+    width: 580px;
+    margin: 0 auto;
+}
+
+.inventory-wrapper {
+    display: flex;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: colors.$color-background;
+}
+
+.inventory-backpack {
+    margin: 16px;
+}
