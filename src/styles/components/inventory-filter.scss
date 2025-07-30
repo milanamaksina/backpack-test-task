@@ -1,0 +1,30 @@
+@use "@/styles/colors";
+
+.inventory-filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 64px;
+    border: 1px solid colors.$color-inventory-filter-border;
+    background-color: colors.$color-inventory-filter-background;
+}
+
+.filter-btn {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: 12px;
+    cursor: pointer;
+
+    .icon {
+        color: colors.$color-inventory-btn-text;
+    }
+
+    &.active {
+        .icon {
+            color: colors.$color-text-active;
+        }
+    }
+}

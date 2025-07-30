@@ -2,7 +2,11 @@
   <div class="inventory-page">
     <InventoryTabs />
     <div class="inventory-wrapper">
-      <InventoryFilter />
+      <InventoryFilter
+        class="filter"
+        :filters="filters"
+        v-model="selectedFilter"
+      />
       <div class="inventory-backpack">
         <InventoryLabel
           :label="activeFilterLabel"
@@ -12,6 +16,7 @@
           :items="filteredItems"
           :errorMessage="errorMessage"
           :isLoading="isLoading"
+          :key="selectedFilter"
         />
       </div>
     </div>
