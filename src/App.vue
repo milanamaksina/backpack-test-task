@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <div><InventoryPage /></div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts" setup>
+import InventoryPage from "@/views/InventoryPage.vue";
+</script>
 
 <style></style>
