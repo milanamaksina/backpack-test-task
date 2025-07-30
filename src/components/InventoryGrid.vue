@@ -1,4 +1,3 @@
-div
 <template>
   <div class="inventory-grid-container">
     <div v-if="isLoading" class="loading-state">
@@ -13,7 +12,12 @@ div
         :key="index"
         class="inventory-cell"
       >
-        <InventoryCard v-if="items[index - 1]" :item="items[index - 1]" />
+        <InventoryCard
+          v-if="items[index - 1]"
+          :item="items[index - 1]"
+          @mouseenter="(e: MouseEvent) => showTooltip(e, items[index - 1].name)"
+          @mouseleave="hideTooltip"
+        />
         <div v-else></div>
       </div>
       <InventoryCardTooltip ref="tooltipRef" />
@@ -25,7 +29,7 @@ div
 import type { InventoryItem } from "@/types/inventory";
 import InventoryCard from "@/components/InventoryCard.vue";
 import InventoryCardTooltip from "@/components/InventoryCardTooltip.vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 interface Props {
   items: InventoryItem[];
@@ -33,6 +37,16 @@ interface Props {
   error?: string | null;
 }
 const props = defineProps<Props>();
+
+const tooltipRef = ref<InstanceType<typeof InventoryCardTooltip>>();
+
+function showTooltip(e: MouseEvent, name: string) {
+  tooltipRef.value?.showTooltip(e, name);
+}
+
+function hideTooltip() {
+  tooltipRef.value?.hideTooltip();
+}
 
 const totalSlots = 40;
 const totalSlotsToRender = computed(() =>

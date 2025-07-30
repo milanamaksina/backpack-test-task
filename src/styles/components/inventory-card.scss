@@ -24,6 +24,7 @@
         position: relative;
         width: 93px;
         height: 93px;
+        padding: 8px;
 
         .item-image {
             width: 100%;
@@ -33,15 +34,15 @@
         }
 
         &.cooldown img {
-            opacity: 0.9;
+            opacity: 0.5;
         }
 
         &.armor {
-            background: radial-gradient(59.14% 59.14% at 50% 50%, #7f59ce 0%, rgba(127, 89, 206, 0) 100%);
+            background: colors.$color-gradient-armor;
         }
 
         &.weapon {
-            background: radial-gradient(59.14% 59.14% at 50% 50%, #7f59ce 0%, rgba(127, 89, 206, 0) 100%), #1a1a1a;
+            background: colors.$color-gradient-weapon;
         }
     }
 

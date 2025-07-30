@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="inventory-card"
-    :class="[item.type, { 'card-visible': cardVisible }]"
-  >
-    <div class="image-wrapper" :class="{ cooldown: isOnCooldown }">
+  <div class="inventory-card" :class="{ 'card-visible': cardVisible }">
+    <div class="image-wrapper" :class="[item.type, { cooldown: isOnCooldown }]">
       <div
         v-if="item.charges && item.maxCharges && imgLoaded"
         class="charges-label"
@@ -11,6 +8,7 @@
         {{ item.charges }}/{{ item.maxCharges }}
       </div>
       <div v-if="item.count && imgLoaded" class="count-label">
+        <span class="prefix">×</span>
         {{ item.count }}
       </div>
       <img

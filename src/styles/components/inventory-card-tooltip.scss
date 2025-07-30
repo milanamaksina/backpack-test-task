@@ -1,0 +1,17 @@
+@use "@/styles/colors";
+@use "@/styles/fonts";
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    background-color: colors.$color-inventory-tooltip-background;
+    font-family: "Apercu Pro", sans-serif;
+    color: colors.$color-text-active;
+    border: 1px solid colors.$color-text-active;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 1000;
+    opacity: 0.85;
+    white-space: nowrap;
+}
