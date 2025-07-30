@@ -1,0 +1,18 @@
+@use "@/styles/colors";
+
+.inventory-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: colors.$color-text-active;
+}
+
+.label {
+    font-family: "Commuters Sans", sans-serif;
+    font-size: 24px;
+}
+
+.item-counter {
+    font-family: "Apercu Pro", sans-serif;
+    font-size: 19px;
+}
