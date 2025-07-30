@@ -4,7 +4,10 @@
     <div class="inventory-wrapper">
       <InventoryFilter />
       <div class="inventory-backpack">
-        <InventoryLabel />
+        <InventoryLabel
+          :label="activeFilterLabel"
+          :totalItems="inventory.length"
+        />
         <InventoryGrid
           :items="filteredItems"
           :errorMessage="errorMessage"
@@ -18,30 +21,18 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
 import { useRoute } from "vue-router";
-import { fetchInventory } from "../api/inventory";
 import InventoryGrid from "@/components/InventoryGrid.vue";
 import InventoryFilter from "@/components/InventoryFilter.vue";
 import InventoryTabs from "@/components/InventoryTabs.vue";
 import InventoryLabel from "@/components/InventoryLabel.vue";
 import type { InventoryItem } from "@/types/inventory";
+import { inventoryFilters } from "@/constants/inventoryFilters";
+import { useInventory } from "@/composables/useInventory";
 
 const route = useRoute();
 const selectedFilter = ref("all");
-const inventory = ref<InventoryItem[]>([]);
-const errorMessage = ref<string | null>(null);
-const isLoading = ref(false);
-
-const loadInventory = async (caseNumber: number) => {
-  try {
-    isLoading.value = true;
-    const data = await fetchInventory(caseNumber);
-    inventory.value = data.inventory;
-  } catch (error) {
-    errorMessage.value = `Error loading inventory: ${error}`;
-  } finally {
-    isLoading.value = false;
-  }
-};
+const filters = ref(inventoryFilters);
+const { inventory, isLoading, errorMessage, loadInventory } = useInventory();
 
 watch(
   () => route.query.case,
@@ -52,6 +43,12 @@ watch(
   },
   { immediate: true }
 );
+
+const activeFilter = computed(() =>
+  filters.value.find((f) => f.id === selectedFilter.value)
+);
+
+const activeFilterLabel = computed(() => activeFilter.value?.label ?? "all");
 
 const filteredItems = computed(() => {
   if (selectedFilter.value === "all") return inventory.value;
